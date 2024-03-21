@@ -40,6 +40,9 @@
 #include "../Game/fireman.h"
 #include "../Game/watergirl.h"
 #include "../Game/myMap.h"
+#include "../Game/myButton.h"
+#include "../Game/myScene.h"
+#include "../Game/myObject.h"
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
@@ -91,29 +94,25 @@ namespace game_framework {
 	protected:
 		void OnMove();									// 移動遊戲元素
 		void OnShow();									// 顯示這個狀態的遊戲畫面
-		void show_page();	//show page
-		void show_window();
 		void ShowWindowCoordinate();
 		void IsMouseOverlap(int mouse_x, int mouse_y);
+		void TestOverlap(int mouse_x, int mouse_y);
 	private:
 		int page_phase = 0;	//page select {home:0, menu:1, map1:2, map2:3, ...}
-		bool call_window = false;
-		int window_phase = 0;	//window(setting paused die pass) select
-		CMovingBitmap background;
-		CMovingBitmap button[12];	// (home: play setting) (menu:stage1,2,3,4 back) (map:paused) {window:(settig:muic effect) (paused:end resume retry) (die:menu retry skip) (pass:continue)}
-		CMovingBitmap map_block[5];
-		CMovingBitmap window[4];
+		/*
 		CMovingBitmap map_box;
 		CMovingBitmap map_button[3];	//blue purple red
 		CMovingBitmap map_controller[5];	//yellow blue green red white
 		CMovingBitmap map_diamond[3];	//red blue white
 		CMovingBitmap map_door[2];	//fire water
 		CMovingBitmap map_pole[3];	//M1_purple,yellow
-
+		*/
 		Fireman fireman;
 		Watergirl watergirl;
 		Map map;
-		
+		Button button;
+		Scene scene;
+		Object object;
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
