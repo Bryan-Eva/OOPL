@@ -298,6 +298,7 @@ void CGameStateRun::IsMouseOverlap(int mouse_x, int mouse_y) {
 	//at die
 	if (button.ifOverlap(15, CPoint(mouse_x, mouse_y)) && page_phase == 4) {
 		//menu
+		this->resetLevel(this->page_phase - 3);
 		page_phase = 1;
 		if (musicPlay) {
 			audio->Stop(0);
