@@ -144,7 +144,7 @@ void CGameStateRun::OnShow()
 	
 
 	if (page_phase >= 6) {	//Map
-
+		last_stage = page_phase;	//紀錄所在關卡 用於重製&繼續
 		map.showMap(page_phase - 5);
 		mapButton.showObject(page_phase - 5);
 		mapController.showObject(page_phase - 5);
@@ -289,11 +289,14 @@ void CGameStateRun::IsMouseOverlap(int mouse_x, int mouse_y) {
 	}
 	if (button.ifOverlap(13, CPoint(mouse_x, mouse_y)) && page_phase == 3) {
 		//resume unwork
+		this->page_phase = last_stage;
 		buttonClick = true;
 	}
 	if (button.ifOverlap(14, CPoint(mouse_x, mouse_y)) && page_phase == 3) {
-		//skip unwork
+		//retry unwork
 		buttonClick = true;
+		this->resetLevel(last_stage - 5);
+		this->page_phase = last_stage;
 	}
 	//at die
 	if (button.ifOverlap(15, CPoint(mouse_x, mouse_y)) && page_phase == 4) {
@@ -304,13 +307,14 @@ void CGameStateRun::IsMouseOverlap(int mouse_x, int mouse_y) {
 			audio->Stop(2);
 			audio->Play(1, true);
 		}
+		this->resetLevel(last_stage - 5);
 		buttonClick = true;
 	}
 	if (button.ifOverlap(16, CPoint(mouse_x, mouse_y)) && page_phase == 4) {
 		//retry unwork
 		buttonClick = true;
-		this->resetLevel(this->page_phase - 3);
-		this->page_phase = 6;
+		this->resetLevel(last_stage - 5);
+		this->page_phase = last_stage;
 	}
 	if (button.ifOverlap(17, CPoint(mouse_x, mouse_y)) && page_phase == 4) {
 		//skip
