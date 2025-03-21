@@ -1,4 +1,6 @@
 # ObjectOrientedProgrammingLab
+## Demo影片
+影片連結：[Demo](https://www.youtube.com/watch?v=SwZG6OKOS2M)
 ## 遊玩使用手冊
 ### 角色控制
 - 小火人  
